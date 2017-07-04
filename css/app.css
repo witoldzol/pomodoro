@@ -1,0 +1,9 @@
+p {
+  background: #9999ff; }
+
+body {
+  -webkit-columns: 2 350px;
+  -moz-columns: 2 350px;
+  columns: 2 350px; }
+
+/*# sourceMappingURL=app.css.map */
