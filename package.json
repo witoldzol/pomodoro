@@ -1,0 +1,8 @@
+{
+  "name": "pomodoro",
+  "version": "1.0.0",
+  "main": "app.js",
+  "repository": "git@github.com:witoldzol/pomodoro.git",
+  "author": "witoldzol <blue3656@gmail.com>",
+  "license": "MIT"
+}
