@@ -3,29 +3,26 @@
 //element displaying main clock
 let clock = document.getElementById("clock")
 
-let start = new Date()
+let duration = 25 * 60
 
-let min = startDate.getMinutes()
-let sec = startDate.getSeconds()
+function startTimer(duration, display) {
 
-clock.innerHTML = min + ':' + sec
 
-let counter = function () {
+    var timer = duration
 
-	sec--
+    setInterval(function () {
 
-	if(sec == 00) {
+        minutes = parseInt(timer / 60, 10)
+        seconds = parseInt(timer % 60, 10);
 
-		sec = 60
-		min--
-	}
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
 
-	clock.innerHTML = (min < 10 ? "0" + min : min)
-	 + ":" + (sec < 10 ? "0" + sec : sec)
-	clock.innerHTML = min + ':' + sec
-	
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
 }
-
-counter()
-
-setInterval(counter, 1000)	
+startTimer(duration, clock)
