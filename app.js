@@ -3,9 +3,12 @@
 
 //start button
 let startBtn = document.getElementById('start')
-let flag = 0
+
+//plus button
+let plusBtn = document.getElementById('plus')
 
 //element displaying main clock
+
 let clock = document.getElementById("clock")
 
 //default values
@@ -14,6 +17,16 @@ let pomodoroBrake = 5
 
 //duration in seconds
 let duration = pomodoroTime * 60
+
+//add time 
+function addTime (){
+
+    let value = clock.textContent
+    value++
+    clock.textContent = value
+}
+
+$('#plusBtn').click( addTime() )
 
 //timer function
 function startTimer(duration, display) {
@@ -37,10 +50,11 @@ function startTimer(duration, display) {
     }, 1000)
 }
 
+
+/*
 //start&pause timer and change button name 
 function starter () {
 
-    
 
     if (flag === 0) {
 
@@ -50,16 +64,12 @@ function starter () {
     else {
 
         flag = 0 
-        clearInterval(timerFunction);
+        clearInterval(timerFunction)
     }
 
 }
 
-//start button on click
-startBtn.onclick = starter()
+*/
+//$('#start').click( startTimer(duration, clock) )
+$('#start').on('click', startTimer(duration, clock) )
 
-// to do:
-
--fix the pausing 
--do the name change on the  button
--make an loop between pomodoro timer and brake timer (transition and auto reset)
