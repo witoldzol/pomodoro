@@ -1,25 +1,50 @@
 
-//default values
-let pomodoroTime = 25
-let pomodoroBrake = 5
+//------ BUTTONS ---
 
-//duration in seconds
-let duration = pomodoroTime * 60
+//start button
+let startBtn = document.getElementById('start')
 
-//add time 
-function addTime (){
+//plus button
+let plusBtn = document.getElementById('plus')
 
-    let value = clock.textContent
-    value++
-    clock.textContent = value
+//minus button 
+let minusBtn = document.getElementById('minus')
+
+//element displaying main clock
+let clock = document.getElementById("clock")
+
+//element displaying brake time
+let brake = document.getElementById('brake')
+
+// in minutes
+let minPomodoro = 25 
+let minBrake = 5
+
+clock.textContent = minPomodoro + ':00'
+brake.textContent = minBrake + ':00'
+
+startBtn.onclick = () => {
+
+    if(startBtn.textContent == 'START') {
+
+        startTimer(minPomodoro, clock)
+        startBtn.textContent = 'PAUSE'
+        
+    } else {
+
+       
+
+    }
+
 }
 
 //timer function
 function startTimer(duration, display) {
 
+    //we need to convert minutes to seconds
+    let timer = duration * 60
 
-    let timer = duration
-
+    //actual timer function
     let timerFunction = setInterval(function () {
 
         minutes = parseInt(timer / 60, 10)
@@ -34,18 +59,11 @@ function startTimer(duration, display) {
             timer = duration
         }
     }, 1000)
-}
 
+    let pause = function pause() {
 
-
-//start&pause timer and change button name 
-function starter () {
-
-        startTimer(duration, clock)
+        clearInterval(timerFunction)
+    }
 
 }
-
-
-//$('#start').click( startTimer(duration, clock) )
-$('#start').on('click', starter() )
 
