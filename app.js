@@ -7,7 +7,11 @@ let minPomodoro = 25
 let minBrake = 5
 
 //convert time to seconds
-let setTime = minPomodoro * 60
+function setTime (x) {
+
+    return x*60
+}
+
 
 //timer switch
 let timerRunning = false
@@ -53,10 +57,31 @@ plusBtn.onclick = () => {
     if(!timerRunning) {
 
         minPomodoro++
+        //recalculate dependent variable
+        //setTime=minPomodoro*60
         updateTimeDisplay()       
 
     }
 }
+
+//-----function for MINUS button
+
+minusBtn.onclick = () => {
+
+    //if timer is not started, we can update time
+    if(!timerRunning) {
+
+        //set minimum limit, so we won't run into negative values
+        if(minPomodoro > 1){
+
+            minPomodoro--
+            updateTimeDisplay()
+        }
+        
+    }
+    
+}
+
 
 //----- function for START button
 startBtn.onclick = () => {
@@ -64,7 +89,7 @@ startBtn.onclick = () => {
     //start
     if(startBtn.textContent == 'START') {
 
-        timerObject.start(setTime, clock)
+        timerObject.start(setTime(minPomodoro), clock)
         startBtn.textContent = 'PAUSE'
         timerRunning = true
     
@@ -76,7 +101,8 @@ startBtn.onclick = () => {
     
     //resume
     } else if ( startBtn.textContent == 'RESUME') {
-
+       //use existing minutes variable
+       // transform into seconds, add reminder and pass it in 
        timerObject.start(minutes*60 + seconds, clock)
        startBtn.textContent = 'PAUSE'
 
@@ -87,10 +113,9 @@ startBtn.onclick = () => {
 
 // ------ function for RESET button
 
-resetBtn.onclick = () => {
+resetBtn.onclick = function() {
     
-    alarm('djflkd')
-    timerObject.reset()
+    window.location.reload()
 
 }
 
@@ -128,18 +153,6 @@ let timerObject = {
 
         //not sure if this is needed (the deletion line)
         //delete this.interval
-    },
-
-    reset: function () {
-
-        clearInterval(this.interval)
-        delete this.interval
-        //reset timers to default
-        minPomodoro = 25 
-        minBrake = 5
-        //update display
-        updateTimeDisplay()
     }
-
 
 }
