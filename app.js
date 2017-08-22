@@ -3,18 +3,17 @@
 
 
 //time in minutes
-let minPomodoro = 25 
-let minBrake = 5
+let minPomodoro = 0.1 
+let minBrake = 0.1
 
 //convert time to seconds
-function setTime (x) {
-
-    return x*60
-}
-
+let setTime = (x) => x*60
 
 //timer switch
 let timerRunning = false
+
+//brake timer switch
+let brakeRunning = false
 
 //------ BUTTONS --- HTML
 
@@ -140,15 +139,36 @@ let timerObject = {
 
                 display.textContent = minutes + ":" + seconds
 
+                //Timer runs out of time, we switch
                 if (--timer < 0) {
-                    timer = duration
+                    //if our pomodoro is running, we switch to brake timer
+                    if( timerRunning ){
+
+                        timer = duration
+                        timerObject.pause()
+                        timerRunning = false
+                        brakeRunning = true
+                        //PLAY SOUND
+                        timerObject.start(setTime(minBrake),brake)
+
+                    //if our brake timer runs out, we clear all
+                    } else {
+
+                        timer = duration
+                        timerObject.pause()
+                        timerRunning = true
+                        brakeRunning = false
+                        //PLAY SOUND
+                        timerObject.start(setTime(minPomodoro),clock)
+                    }
+
+
                 }
             }, 1000)
 
     },
 
     pause: function () {
-
         clearInterval(this.interval)
 
         //not sure if this is needed (the deletion line)
