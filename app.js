@@ -52,6 +52,7 @@ updateTimeDisplay()
 
 plusBtn.onclick = () => {
     
+    
     //if timer is not started, we can update time
     if(!timerRunning) {
 
@@ -85,24 +86,36 @@ minusBtn.onclick = () => {
 //----- function for START button
 startBtn.onclick = () => {
 
-    //start
+    //START BUTTON
     if(startBtn.textContent == 'START') {
 
         timerObject.start(setTime(minPomodoro), clock)
         startBtn.textContent = 'PAUSE'
         timerRunning = true
     
-    //pause    
+    //PAUSE BUTTON    
     } else if( startBtn.textContent == 'PAUSE') {
 
        timerObject.pause()
        startBtn.textContent = 'RESUME' 
     
-    //resume
+    //RESUME BUTTON
     } else if ( startBtn.textContent == 'RESUME') {
+       
        //use existing minutes variable
        // transform into seconds, add reminder and pass it in 
-       timerObject.start(minutes*60 + seconds, clock)
+
+       //if statment to check which timer(main or brake) needs to be resumed
+       if( timerRunning ) {
+
+           timerObject.start(minutes*60 + seconds, clock)
+        //brake timer
+       } else {
+
+           timerObject.start(minutes*60 + seconds, brake)
+
+       }
+       //change button name
        startBtn.textContent = 'PAUSE'
 
     }
@@ -139,7 +152,7 @@ let timerObject = {
 
                 display.textContent = minutes + ":" + seconds
 
-                //Timer runs out of time, we switch
+                //--- TIMER SWITCH ---- When Timer runs out of time, we switch
                 if (--timer < 0) {
                     //if our pomodoro is running, we switch to brake timer
                     if( timerRunning ){
@@ -169,10 +182,9 @@ let timerObject = {
     },
 
     pause: function () {
+
         clearInterval(this.interval)
 
-        //not sure if this is needed (the deletion line)
-        //delete this.interval
     }
 
 }
