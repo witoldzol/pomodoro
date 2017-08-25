@@ -2,50 +2,68 @@
 // ------- VARIABLES ------ JS
 
 
-//time in minutes
-let minPomodoro = 0.1 
-let minBrake = 0.1
+    //time in minutes
+    let minPomodoro = 0.1 
+    let minBrake = 0.1
 
-//convert time to seconds
-let setTime = (x) => x*60
+    //convert time to seconds
+    let setTime = (x) => x*60
 
-//timer switch
-let timerRunning = false
+    //timer switch
+    let timerRunning = false
 
-//brake timer switch
-let brakeRunning = false
+    //brake timer switch
+    let brakeRunning = false
 
 //------ BUTTONS --- HTML
 
-//start button
-let startBtn = document.getElementById('start')
+    //start button
+    let startBtn = document.getElementById('start')
 
-//reset button
-let resetBtn = document.getElementById('reset')
+    //reset button
+    let resetBtn = document.getElementById('reset')
 
-//plus button
-let plusBtn = document.getElementById('plus')
+    //plus button
+    let plusBtn = document.getElementById('plus')
 
-//minus button 
-let minusBtn = document.getElementById('minus')
+    //minus button 
+    let minusBtn = document.getElementById('minus')
 
-//element displaying main clock
-let clock = document.getElementById("clock")
+    //element displaying main clock
+    let clock = document.getElementById("clock")
 
-//element displaying brake time
-let brake = document.getElementById('brake')
+    //element displaying brake time
+    let brake = document.getElementById('brake')
+
+
+
+
+//----------- ELEMENT FOCUS SWITCHES--------
+
+    //switch for clock element
+    let clockFocused = true
+    //switch for brake timer element
+    let brakeFocused = false
+
+    //flip switches on focus
+
+    $(clock).on('focus', () => {clockFocused = true; brakeFocused = false} )
+    $(brake).on('focus', () => {clockFocused = false; brakeFocused = true} )
+
 
     
 //add zeros to minutes in html
-function updateTimeDisplay () {
-
-    clock.textContent = minPomodoro + ':00'
-    brake.textContent = minBrake + ':00'
     
-}
+    function updateTimeDisplay () {
+
+        clock.textContent = minPomodoro + ':00'
+        brake.textContent = minBrake + ':00'
+        
+    }
 
 //run initial update (add zeros lol)
-updateTimeDisplay()
+    
+    updateTimeDisplay()
 
 
 //----function for PLUS button 
@@ -56,7 +74,15 @@ plusBtn.onclick = () => {
     //if timer is not started, we can update time
     if(!timerRunning) {
 
-        minPomodoro++
+        //if we focused brake element last, it will update the brake timer
+        if(brakeFocused){
+            
+            minBrake++
+
+        } else {
+
+            minPomodoro++
+        }
         //recalculate dependent variable
         //setTime=minPomodoro*60
         updateTimeDisplay()       
@@ -74,7 +100,15 @@ minusBtn.onclick = () => {
         //set minimum limit, so we won't run into negative values
         if(minPomodoro > 1){
 
-            minPomodoro--
+            if(brakeFocused){
+                
+                minBrake--
+
+            } else {
+
+                minPomodoro--
+            }
+
             updateTimeDisplay()
         }
         

@@ -56,4 +56,12 @@ body {
   line-height: 40px;
   background-color: #567; }
 
+.timer:focus {
+  border: solid green 5px;
+  outline: 0; }
+
+#brake:focus {
+  border: solid green 5px;
+  outline: 0; }
+
 /*# sourceMappingURL=app.css.map */
