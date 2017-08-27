@@ -70,7 +70,6 @@
 
 plusBtn.onclick = () => {
     
-    
     //if timer is not started, we can update time
     if(!timerRunning) {
 
@@ -98,11 +97,14 @@ minusBtn.onclick = () => {
     if(!timerRunning) {
 
         //set minimum limit, so we won't run into negative values
-        if(minPomodoro > 1){
+        if( minPomodoro > 1 ){
 
             if(brakeFocused){
                 
-                minBrake--
+                if ( minBrake >= 1 ) {
+
+                    minBrake--
+                }
 
             } else {
 
@@ -195,7 +197,7 @@ let timerObject = {
                         timerObject.pause()
                         timerRunning = false
                         brakeRunning = true
-                        //PLAY SOUND
+                        play()
                         timerObject.start(setTime(minBrake),brake)
 
                     //if our brake timer runs out, we clear all
@@ -205,7 +207,7 @@ let timerObject = {
                         timerObject.pause()
                         timerRunning = true
                         brakeRunning = false
-                        //PLAY SOUND
+                        play()
                         timerObject.start(setTime(minPomodoro),clock)
                     }
 
@@ -220,5 +222,15 @@ let timerObject = {
         clearInterval(this.interval)
 
     }
+
+}
+
+
+// ------- Play sound function
+
+function play() {
+    
+    let audio = document.getElementById('audio')
+    audio.play()
 
 }

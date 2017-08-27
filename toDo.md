@@ -10,5 +10,5 @@
 -//ability to select main / brake clock -> pass this value to + / - buttons //
 //hat can update both clocks!!!
 
--fix minus button as it doesn't deduct brake timer
-
+//fix minus button as it doesn't deduct brake timer
+//play sound on timer switch
