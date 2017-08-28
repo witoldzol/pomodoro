@@ -3,8 +3,8 @@
 
 
     //time in minutes
-    let minPomodoro = 0.1 
-    let minBrake = 0.1
+    let minPomodoro = 25
+    let minBrake = 5
 
     //convert time to seconds
     let setTime = (x) => x*60
