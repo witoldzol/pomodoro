@@ -128,7 +128,8 @@ startBtn.onclick = () => {
         timerObject.start(setTime(minPomodoro), clock)
         startBtn.textContent = 'PAUSE'
         timerRunning = true
-    
+        animate()
+
     //PAUSE BUTTON    
     } else if( startBtn.textContent == 'PAUSE') {
 
@@ -233,4 +234,32 @@ function play() {
     let audio = document.getElementById('audio')
     audio.play()
 
+}
+
+
+//------ ANIMATION
+
+function animate () {
+
+    let elem = clock
+
+    let wid = 280
+
+    let id = setInterval(frame, 3)
+
+    function frame () {
+
+        if( wid == 1200 ) {
+
+            alert(wid)
+            clearInterval(id);
+
+        } else {
+            
+            wid++
+            elem.style.width = wid + 'px'
+        }
+
+
+    }
 }

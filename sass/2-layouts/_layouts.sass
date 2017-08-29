@@ -13,43 +13,51 @@
 	border-radius: $r
 
 #container
-	border:		2px solid black
 	margin: 	20vh auto 0 auto
-	+box		(300px, 400px, 0)
+	+box		(300px, 60px, 0)
 	max-height:	400px
 
 .timer
 	position: 	absolute
-	+box		(220px, 220px, 10)
-	+bg(dodgerblue)
-	+br(50%)
+	+box		(280px, 280px, 10)
+	+bg 		(dodgerblue)
+	+br 		(50%)
+	font-size:	25px
 	
-
 
 .break-timer
-	
 	position:	absolute
-	margin:		130px, 
-	+box 		(150px, 150px,1)
+	margin:		180px, 
+	+box 		(180px, 180px,1)
 	+bg(green)
 	+br(50%)
+	font-size:	25px
+
+.filler
+	+box(100%, 400px,0)
+
 .controls
-	+box(100%, 40px, 0)
+	+box(80%, 40px, 0)
+	margin: 	auto
 	display:	flex
 
+
 .plus
-	border:		1px solid red
 	display:  	inline-box
 	+box		(50%, 40px, 0)
 	+bg(orange)	
 
 .minus
-	border:		1px solid orange
 	display:	inline-box
 	+box 		(50%, 40px, 0)
 	+bg(yellow)
 
+.reset
+	display:	inline-box
+	+box 		(50%, 40px, 0)
+	+bg(yellow)	
+
 .start
-	border:		1px solid green
-	+box 		(100%, 40px, 0)
-	+bg(#567)
+	+box 		(79%, 50px, 0)
+	+bg 		(#567)
+	margin:		auto

@@ -1,46 +1,53 @@
 body {
-  background: #123456; }
+  background: #123444; }
 
 body {
   text-align: center; }
 
 #container {
-  border: 2px solid black;
   margin: 20vh auto 0 auto;
   width: 300px;
-  height: 400px;
-  line-height: 400px;
+  height: 60px;
+  line-height: 60px;
   z-index: 0;
   max-height: 400px; }
 
 .timer {
   position: absolute;
-  width: 220px;
-  height: 220px;
-  line-height: 220px;
+  width: 280px;
+  height: 280px;
+  line-height: 280px;
   z-index: 10;
   background-color: dodgerblue;
-  border-radius: 50%; }
+  border-radius: 50%;
+  font-size: 25px; }
 
 .break-timer {
   position: absolute;
-  margin: 130px;
-  width: 150px;
-  height: 150px;
-  line-height: 150px;
+  margin: 180px;
+  width: 180px;
+  height: 180px;
+  line-height: 180px;
   z-index: 1;
   background-color: green;
-  border-radius: 50%; }
+  border-radius: 50%;
+  font-size: 25px; }
+
+.filler {
+  width: 100%;
+  height: 400px;
+  line-height: 400px;
+  z-index: 0; }
 
 .controls {
-  width: 100%;
+  width: 80%;
   height: 40px;
   line-height: 40px;
   z-index: 0;
+  margin: auto;
   display: flex; }
 
 .plus {
-  border: 1px solid red;
   display: inline-box;
   width: 50%;
   height: 40px;
@@ -49,7 +56,14 @@ body {
   background-color: orange; }
 
 .minus {
-  border: 1px solid orange;
+  display: inline-box;
+  width: 50%;
+  height: 40px;
+  line-height: 40px;
+  z-index: 0;
+  background-color: yellow; }
+
+.reset {
   display: inline-box;
   width: 50%;
   height: 40px;
@@ -58,12 +72,12 @@ body {
   background-color: yellow; }
 
 .start {
-  border: 1px solid green;
-  width: 100%;
-  height: 40px;
-  line-height: 40px;
+  width: 79%;
+  height: 50px;
+  line-height: 50px;
   z-index: 0;
-  background-color: #567; }
+  background-color: #567;
+  margin: auto; }
 
 .timer:focus {
   border: solid green 5px;
@@ -72,5 +86,121 @@ body {
 #brake:focus {
   border: solid green 5px;
   outline: 0; }
+
+.plus {
+  background-color: #1F86DF;
+  background-image: -webkit-linear-gradient(top, #1F86DF 0%, #0054be 50%, #003baf 50%, #0040b1 100%);
+  background-image: linear-gradient(to bottom,#1F86DF 0%, #0054be 50%, #003baf 50%, #0040b1 100%);
+  border: 1px solid #00178e;
+  border-bottom: 1px solid #000765;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 0 0 #44a3eb;
+  color: white;
+  display: inline-block;
+  font-size: inherit;
+  font-weight: bold;
+  padding: 7px 18px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 -1px 1px #00006d;
+  padding: 0;
+  margin: 1px; }
+  .plus:hover:not(:disabled) {
+    background-color: #1277cd;
+    background-image: -webkit-linear-gradient(top, #1277cd 0%, #0048ac 50%, #00319d 50%, #0036a0 100%);
+    background-image: linear-gradient(to bottom,#1277cd 0%, #0048ac 50%, #00319d 50%, #0036a0 100%);
+    cursor: pointer; }
+  .plus:active:not(:disabled), .plus:focus:not(:disabled) {
+    box-shadow: inset 0 0 20px 0 #001265; }
+  .plus:disabled {
+    cursor: not-allowed;
+    opacity: 0.5; }
+
+.minus {
+  background-color: #1F86DF;
+  background-image: -webkit-linear-gradient(top, #1F86DF 0%, #0054be 50%, #003baf 50%, #0040b1 100%);
+  background-image: linear-gradient(to bottom,#1F86DF 0%, #0054be 50%, #003baf 50%, #0040b1 100%);
+  border: 1px solid #00178e;
+  border-bottom: 1px solid #000765;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 0 0 #44a3eb;
+  color: white;
+  display: inline-block;
+  font-size: inherit;
+  font-weight: bold;
+  padding: 7px 18px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 -1px 1px #00006d;
+  padding: 0;
+  margin: 1px; }
+  .minus:hover:not(:disabled) {
+    background-color: #1277cd;
+    background-image: -webkit-linear-gradient(top, #1277cd 0%, #0048ac 50%, #00319d 50%, #0036a0 100%);
+    background-image: linear-gradient(to bottom,#1277cd 0%, #0048ac 50%, #00319d 50%, #0036a0 100%);
+    cursor: pointer; }
+  .minus:active:not(:disabled), .minus:focus:not(:disabled) {
+    box-shadow: inset 0 0 20px 0 #001265; }
+  .minus:disabled {
+    cursor: not-allowed;
+    opacity: 0.5; }
+
+.reset {
+  background-color: #F06560;
+  background-image: -webkit-linear-gradient(top, #F06560 0%, #b8333f 50%, #9a1a30 50%, #a11f32 100%);
+  background-image: linear-gradient(to bottom,#F06560 0%, #b8333f 50%, #9a1a30 50%, #a11f32 100%);
+  border: 1px solid #7b000f;
+  border-bottom: 1px solid #720000;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 0 0 #ff826c;
+  color: white;
+  display: inline-block;
+  font-size: inherit;
+  font-weight: bold;
+  padding: 7px 18px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 -1px 1px #640000;
+  padding: 0;
+  margin: 1px; }
+  .reset:hover:not(:disabled) {
+    background-color: #e3564e;
+    background-image: -webkit-linear-gradient(top, #e3564e 0%, #ae272d 50%, #93101e 50%, #9a1521 100%);
+    background-image: linear-gradient(to bottom,#e3564e 0%, #ae272d 50%, #93101e 50%, #9a1521 100%);
+    cursor: pointer; }
+  .reset:active:not(:disabled), .reset:focus:not(:disabled) {
+    box-shadow: inset 0 0 20px 0 #810000; }
+  .reset:disabled {
+    cursor: not-allowed;
+    opacity: 0.5; }
+
+.start {
+  background-color: green;
+  background-image: -webkit-linear-gradient(top, green 0%, #004e00 50%, #003500 50%, #003a00 100%);
+  background-image: linear-gradient(to bottom,green 0%, #004e00 50%, #003500 50%, #003a00 100%);
+  border: 1px solid #001100;
+  border-bottom: 1px solid #000100;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 0 0 #259d0c;
+  color: white;
+  display: inline-block;
+  font-size: inherit;
+  font-weight: bold;
+  padding: 7px 18px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 -1px 1px black;
+  margin: 1px;
+  padding: 0; }
+  .start:hover:not(:disabled) {
+    background-color: #007100;
+    background-image: -webkit-linear-gradient(top, #007100 0%, #004200 50%, #002b00 50%, #003000 100%);
+    background-image: linear-gradient(to bottom,#007100 0%, #004200 50%, #002b00 50%, #003000 100%);
+    cursor: pointer; }
+  .start:active:not(:disabled), .start:focus:not(:disabled) {
+    box-shadow: inset 0 0 20px 0 #000c00; }
+  .start:disabled {
+    cursor: not-allowed;
+    opacity: 0.5; }
 
 /*# sourceMappingURL=app.css.map */
