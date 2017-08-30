@@ -14,22 +14,29 @@
 		outline: 0
 
 .plus
-	@include button(shiny, #1F86DF)
+	@include button(#1F86DF)
 	padding:	0
 	margin:		1px
 
 .minus
-	@include button(shiny, #1F86DF)
+	@include button(#1F86DF)
 	padding:	0
 	margin:		1px
 
 .reset
-	@include button(shiny, #F06560)
+	@include button(#F06560)
 	padding:	0
 	margin:		1px
 
 .start
-	@include button(shiny, green)
+	@include button(green)
+	border:		grey solid 1px
 	margin:		1px
 	padding:	0
-//#DEECF9,#91B1CC,#1F86DF,#7186A4,#1C212B,#DEECF9,#91B1CC,#1F86DF
+
+#container
+	//disallow text selection on this element and it's children
+	user-select: none
+	-moz-user-select: none
+	-webkit-user-select: none
+

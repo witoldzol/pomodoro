@@ -118,6 +118,30 @@ minusBtn.onclick = () => {
     
 }
 
+function expand () {
+
+    let elem
+    let hideEle
+    
+    if(clockFocused){
+
+        elem = clock
+        hideEle = brake
+        
+    } else {
+
+        elem = brake
+        hideEle = clock
+    }
+    
+    elem.style.left = '0vh'
+    elem.style.borderRadius = '0'
+    elem.style.width = '100%'
+
+    hideEle.style.display = 'none' 
+
+}
+
 
 //----- function for START button
 startBtn.onclick = () => {
@@ -128,7 +152,8 @@ startBtn.onclick = () => {
         timerObject.start(setTime(minPomodoro), clock)
         startBtn.textContent = 'PAUSE'
         timerRunning = true
-        animate()
+        //animate()
+        expand()
 
     //PAUSE BUTTON    
     } else if( startBtn.textContent == 'PAUSE') {
@@ -243,21 +268,24 @@ function animate () {
 
     let elem = clock
 
-    let wid = 280
+    let viewPort = 25
 
     let id = setInterval(frame, 3)
 
     function frame () {
 
-        if( wid == 1200 ) {
+        if( viewPort == 100 ) {
 
-            alert(wid)
             clearInterval(id);
 
         } else {
             
-            wid++
-            elem.style.width = wid + 'px'
+            viewPort++
+            elem.style.top = viewPort + 'vh'
+            elem.style.botton = viewPort + 'vh'
+            elem.style.left = viewPort + 'vh'
+            elem.style.right = viewPort + 'vh'
+
         }
 
 
