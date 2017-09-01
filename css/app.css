@@ -79,9 +79,13 @@ body {
   background-color: #567;
   margin: auto; }
 
-.timer:focus {
-  border: solid green 5px;
-  outline: 0; }
+.timer {
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  transition: all 1s; }
+  .timer:focus {
+    border: solid green 5px;
+    outline: 0; }
 
 #brake:focus {
   border: solid green 5px;

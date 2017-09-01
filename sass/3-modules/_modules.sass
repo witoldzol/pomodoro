@@ -1,12 +1,18 @@
 //MIXINS
 
 
-//change color on focus
 
 .timer
+	@include transition(all 1s)
 	&:focus
 		border: solid green 5px
 		outline: 0
+
+
+		
+
+
+
 
 #brake
 	&:focus
@@ -39,4 +45,6 @@
 	user-select: none
 	-moz-user-select: none
 	-webkit-user-select: none
+
+
 

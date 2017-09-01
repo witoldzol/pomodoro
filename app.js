@@ -3,8 +3,8 @@
 
 
     //time in minutes
-    let minPomodoro = 25
-    let minBrake = 5
+    let minPomodoro = 0.030
+    let minBrake = 0.03
 
     //convert time to seconds
     let setTime = (x) => x*60
@@ -118,12 +118,13 @@ minusBtn.onclick = () => {
     
 }
 
+
 function expand () {
 
     let elem
     let hideEle
     
-    if(clockFocused){
+    if(timerRunning){
 
         elem = clock
         hideEle = brake
@@ -137,6 +138,18 @@ function expand () {
     elem.style.left = '0vh'
     elem.style.borderRadius = '0'
     elem.style.width = '100%'
+
+    if(timerRunning){
+
+        elem.style.backgroundColor = '#ff8000'
+        elem.style.display = 'initial'
+        
+    } else {
+
+        elem.style.backgroundColor = '#008744'
+        elem.style.display = 'initial'
+    }
+    
 
     hideEle.style.display = 'none' 
 
@@ -152,7 +165,8 @@ startBtn.onclick = () => {
         timerObject.start(setTime(minPomodoro), clock)
         startBtn.textContent = 'PAUSE'
         timerRunning = true
-        //animate()
+        
+        //transition element to expand on the whole screen 
         expand()
 
     //PAUSE BUTTON    
@@ -224,6 +238,7 @@ let timerObject = {
                         timerRunning = false
                         brakeRunning = true
                         play()
+                        expand()
                         timerObject.start(setTime(minBrake),brake)
 
                     //if our brake timer runs out, we clear all
@@ -234,6 +249,7 @@ let timerObject = {
                         timerRunning = true
                         brakeRunning = false
                         play()
+                        expand()
                         timerObject.start(setTime(minPomodoro),clock)
                     }
 
@@ -261,33 +277,3 @@ function play() {
 
 }
 
-
-//------ ANIMATION
-
-function animate () {
-
-    let elem = clock
-
-    let viewPort = 25
-
-    let id = setInterval(frame, 3)
-
-    function frame () {
-
-        if( viewPort == 100 ) {
-
-            clearInterval(id);
-
-        } else {
-            
-            viewPort++
-            elem.style.top = viewPort + 'vh'
-            elem.style.botton = viewPort + 'vh'
-            elem.style.left = viewPort + 'vh'
-            elem.style.right = viewPort + 'vh'
-
-        }
-
-
-    }
-}
