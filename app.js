@@ -3,8 +3,8 @@
 
 
     //time in minutes
-    let minPomodoro = 0.030
-    let minBrake = 0.03
+    let minPomodoro = 25
+    let minBrake = 5
 
     //convert time to seconds
     let setTime = (x) => x*60
@@ -47,11 +47,23 @@
 
     //flip switches on focus
 
-    $(clock).on('focus', () => {clockFocused = true; brakeFocused = false} )
-    $(brake).on('focus', () => {clockFocused = false; brakeFocused = true} )
+    $(clock).on('click', () => {clockFocused = true; brakeFocused = false; borderFocused()} )
+    $(brake).on('click', () => {clockFocused = false; brakeFocused = true; borderFocused()} )
 
+    function borderFocused () {
 
-    
+        if(clockFocused){
+
+            clock.style.border = "solid 3px orange"
+            brake.style.border = "none"
+
+        } else {
+
+            brake.style.border = "solid 3px orange"
+            clock.style.border = "none"
+        }
+    }
+
 //add zeros to minutes in html
     
     function updateTimeDisplay () {
@@ -101,7 +113,7 @@ minusBtn.onclick = () => {
 
             if(brakeFocused){
                 
-                if ( minBrake >= 1 ) {
+                if ( minBrake > 1 ) {
 
                     minBrake--
                 }
@@ -134,15 +146,20 @@ function expand () {
         elem = brake
         hideEle = clock
     }
-    
+    elem.style.opacity = '1' 
     elem.style.left = '0vh'
     elem.style.borderRadius = '0'
     elem.style.width = '100%'
+    elem.style.height = '25vh'
+    elem.style.lineHeight = '25vh'
+    elem.style.margin = '0'
+    
 
     if(timerRunning){
 
         elem.style.backgroundColor = '#ff8000'
         elem.style.display = 'initial'
+
         
     } else {
 
@@ -151,7 +168,8 @@ function expand () {
     }
     
 
-    hideEle.style.display = 'none' 
+    //hideEle.style.display = 'none' 
+    hideEle.style.opacity = '0' 
 
 }
 
@@ -203,7 +221,7 @@ startBtn.onclick = () => {
 
 resetBtn.onclick = function() {
     
-    window.location.reload()
+    window.location.reload(true)
 
 }
 

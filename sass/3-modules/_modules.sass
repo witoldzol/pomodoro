@@ -3,21 +3,19 @@
 
 
 .timer
+	outline: 0
 	@include transition(all 1s)
-	&:focus
-		border: solid green 5px
-		outline: 0
-
-
-		
-
-
-
+	//@include transition(opacity 1s)
+	&:hover
+		@include transition(all 0.1s)
+		border: solid orange 1px
 
 #brake
-	&:focus
-		border: solid green 5px
-		outline: 0
+	outline: 0
+	@include transition(all 1s)
+	&:hover	
+		@include transition(all 0.1s)
+		border: solid orange 1px
 
 .plus
 	@include button(#1F86DF)

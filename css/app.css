@@ -4,6 +4,10 @@ body {
 body {
   text-align: center; }
 
+h1 {
+  margin-top: 5vh;
+  color: white; }
+
 #container {
   margin: 20vh auto 0 auto;
   width: 300px;
@@ -80,16 +84,26 @@ body {
   margin: auto; }
 
 .timer {
+  outline: 0;
   -webkit-transition: all 1s;
   -moz-transition: all 1s;
   transition: all 1s; }
-  .timer:focus {
-    border: solid green 5px;
-    outline: 0; }
+  .timer:hover {
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    transition: all 0.1s;
+    border: solid orange 1px; }
 
-#brake:focus {
-  border: solid green 5px;
-  outline: 0; }
+#brake {
+  outline: 0;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  transition: all 1s; }
+  #brake:hover {
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    transition: all 0.1s;
+    border: solid orange 1px; }
 
 .plus {
   border: 1px solid #0e61a9;
